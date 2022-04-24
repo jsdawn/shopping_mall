@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:shopping_mall/app_home_screen.dart';
 import 'package:shopping_mall/app_theme.dart';
+import 'package:shopping_mall/routers/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         fontFamily: AppTheme.fontName,
         textTheme: AppTheme.textTheme,
       ),
+      onGenerateRoute: onGenerateRoute,
       home: const AppHomeScreen(),
     );
   }

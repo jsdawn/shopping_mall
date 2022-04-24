@@ -12,7 +12,7 @@ class GoodsHeaderSection extends StatelessWidget {
       children: const [
         Padding(
           padding: EdgeInsets.only(top: 10, left: 15, right: 15),
-          child: Text('运动休闲风', style: TextStyle(fontSize: 20)),
+          child: Text('运动休闲风', style: TextStyle(fontSize: 18)),
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/components/refresh_load_more_view.dart';

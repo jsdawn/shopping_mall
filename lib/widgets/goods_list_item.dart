@@ -6,33 +6,38 @@ class GoodsListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        ClipRRect(
-          borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-          child: AspectRatio(
-            aspectRatio: 1.0,
-            child: Image.asset(
-              'assets/images/book1.jpg',
-              fit: BoxFit.contain,
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed('/detail');
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+            child: AspectRatio(
+              aspectRatio: 1.0,
+              child: Image.asset(
+                'assets/images/book1.jpg',
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
-        const Padding(
-          padding: EdgeInsets.only(top: 8.0),
-          child: Text(
-            '加厚加宽衣服，升级版衣服你值得拥有升级版衣服你值得拥有升级版衣服你值得拥有',
-            style: AppTheme.body1,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 2,
+          const Padding(
+            padding: EdgeInsets.only(top: 8.0),
+            child: Text(
+              '加厚加宽衣服，升级版衣服你值得拥有升级版衣服你值得拥有升级版衣服你值得拥有',
+              style: AppTheme.body1,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 2.0),
-          child: _priceCell(),
-        )
-      ],
+          Padding(
+            padding: const EdgeInsets.only(top: 2.0),
+            child: _priceCell(),
+          )
+        ],
+      ),
     );
   }
 

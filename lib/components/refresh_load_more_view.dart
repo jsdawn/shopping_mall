@@ -19,6 +19,7 @@ class RefreshLoadMoreView extends StatefulWidget {
 
   final bool isFinished;
 
+  // auto height widget
   final Widget child;
 
   final String? noMoreText;
@@ -75,20 +76,7 @@ class _RefreshLoadMoreViewState extends State<RefreshLoadMoreView> {
         physics: const AlwaysScrollableScrollPhysics(),
         children: [
           widget.child,
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            color: AppTheme.chipBackground,
-            child: Center(
-              child: Text(
-                widget.isFinished
-                    ? '已经到底啦'
-                    : _isLoading
-                        ? '加载中...'
-                        : '加载完成',
-                style: AppTheme.caption.copyWith(letterSpacing: 1.8),
-              ),
-            ),
-          ),
+          _footerBlock(),
         ],
       ),
     );
@@ -103,6 +91,23 @@ class _RefreshLoadMoreViewState extends State<RefreshLoadMoreView> {
         await widget.onRefresh!();
       },
       child: _mainContent,
+    );
+  }
+
+  Widget _footerBlock() {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      color: AppTheme.chipBackground,
+      child: Center(
+        child: Text(
+          widget.isFinished
+              ? (widget.noMoreText ?? '已经到底啦')
+              : _isLoading
+                  ? '加载中...'
+                  : '加载完成',
+          style: AppTheme.caption.copyWith(letterSpacing: 1.8),
+        ),
+      ),
     );
   }
 }
