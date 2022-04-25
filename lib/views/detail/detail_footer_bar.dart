@@ -1,17 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/components/basic_button.dart';
+import 'package:shopping_mall/models/cart_info_model.dart';
 import 'package:shopping_mall/widgets/goods/goods_props_pannel.dart';
 
-class DetailFooterBar extends StatelessWidget {
+class DetailFooterBar extends StatefulWidget {
   const DetailFooterBar({Key? key}) : super(key: key);
 
-  static double height = 50;
+  static double height = 55;
+
+  @override
+  State<DetailFooterBar> createState() => _DetailFooterBarState();
+}
+
+class _DetailFooterBarState extends State<DetailFooterBar> {
+  // 当前商品购物属性过滤器
+  late Map<dynamic, String> cartFilter;
+
+  @override
+  void initState() {
+    super.initState();
+    // 初始化商品购物属性
+    cartFilter = {"color": "白色", "size": "M"};
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height,
+      height: DetailFooterBar.height,
       decoration: const BoxDecoration(
         color: AppTheme.nearlyWhite,
         border: Border(
@@ -70,9 +86,12 @@ class DetailFooterBar extends StatelessWidget {
   void _showGoodsPropsSheet(BuildContext context) {
     showModalBottomSheet(
         context: context,
+        isScrollControlled: true,
         builder: (BuildContext ctx) {
           return Container(
-            child: GoodsPropsPannel(),
+            height: MediaQuery.of(context).size.height * 0.65,
+            color: AppTheme.nearlyWhite,
+            child: GoodsCartPannel(cartFilter: cartFilter),
           );
         });
   }
