@@ -16,11 +16,11 @@ class DetailHeader extends StatelessWidget {
             aspectRatio: 2,
             child: Image.network(
               'https://unpkg.com/@jsdawn/assets/images/mall/Clothes1.jpg',
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
+            padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -52,7 +52,7 @@ class DetailHeader extends StatelessWidget {
         children: [
           TextSpan(
             text: '59',
-            style: TextStyle(fontSize: 22),
+            style: TextStyle(fontSize: 24),
           ),
           TextSpan(
             text: '.09 ',

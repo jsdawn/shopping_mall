@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/components/refresh_load_more_view.dart';
 import 'package:shopping_mall/views/goods/goods_header_section.dart';
-import 'package:shopping_mall/widgets/goods_list.dart';
+import 'package:shopping_mall/widgets/goods/goods_list.dart';
 
 class GoodsIndex extends StatefulWidget {
   const GoodsIndex({Key? key}) : super(key: key);

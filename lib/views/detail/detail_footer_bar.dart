@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/components/basic_button.dart';
+import 'package:shopping_mall/widgets/goods/goods_props_pannel.dart';
 
 class DetailFooterBar extends StatelessWidget {
   const DetailFooterBar({Key? key}) : super(key: key);
@@ -35,10 +36,13 @@ class DetailFooterBar extends StatelessWidget {
               ],
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: BasicButton(
-              child: Text('加入购物车'),
+              onPressed: () {
+                _showGoodsPropsSheet(context);
+              },
+              child: const Text('加入购物车'),
               size: BasicButtonSize.large,
             ),
           ),
@@ -61,5 +65,15 @@ class DetailFooterBar extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _showGoodsPropsSheet(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext ctx) {
+          return Container(
+            child: GoodsPropsPannel(),
+          );
+        });
   }
 }
