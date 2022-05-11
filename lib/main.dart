@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_mall/app_home_screen.dart';
 import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/routers/routes.dart';
@@ -12,7 +13,7 @@ void main() async {
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
-  ]).then((_) => runApp(const MyApp()));
+  ]).then((_) => runApp(const ProviderScope(child: MyApp())));
 }
 
 class MyApp extends StatelessWidget {

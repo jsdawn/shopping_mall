@@ -22,7 +22,7 @@ class CartInfoModel {
 
   int id;
   String name;
-  int price;
+  double price;
   String image;
   int count;
   String color;

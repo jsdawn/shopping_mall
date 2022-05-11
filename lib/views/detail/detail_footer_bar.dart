@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/components/basic_button.dart';
-import 'package:shopping_mall/models/cart_info_model.dart';
+import 'package:shopping_mall/components/show_basic_bottom_sheet.dart';
 import 'package:shopping_mall/widgets/goods/goods_props_pannel.dart';
 
 class DetailFooterBar extends StatefulWidget {
@@ -21,7 +21,7 @@ class _DetailFooterBarState extends State<DetailFooterBar> {
   void initState() {
     super.initState();
     // 初始化商品购物属性
-    cartFilter = {"color": "白色", "size": "M"};
+    cartFilter = {"color": "白色", "size": "S"};
   }
 
   @override
@@ -84,15 +84,7 @@ class _DetailFooterBarState extends State<DetailFooterBar> {
   }
 
   void _showGoodsPropsSheet(BuildContext context) {
-    showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        builder: (BuildContext ctx) {
-          return Container(
-            height: MediaQuery.of(context).size.height * 0.65,
-            color: AppTheme.nearlyWhite,
-            child: GoodsCartPannel(cartFilter: cartFilter),
-          );
-        });
+    showBasicBottomSheet(
+        context: context, child: GoodsCartPannel(cartFilter: cartFilter));
   }
 }

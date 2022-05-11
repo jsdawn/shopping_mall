@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/components/basic_button.dart';
 import 'package:shopping_mall/components/num_counter.dart';
+import 'package:shopping_mall/models/cart_info_model.dart';
 
 class GoodsCartPannel extends StatefulWidget {
   const GoodsCartPannel({Key? key, required this.cartFilter}) : super(key: key);
@@ -28,8 +29,7 @@ class _GoodsCartPannelState extends State<GoodsCartPannel> {
   @override
   void didUpdateWidget(GoodsCartPannel oldWidget) {
     super.didUpdateWidget(oldWidget);
-    print("oldWidget");
-    print(oldWidget);
+    print('didUpdateWidget');
   }
 
   @override
@@ -99,7 +99,17 @@ class _GoodsCartPannelState extends State<GoodsCartPannel> {
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             color: AppTheme.nearlyWhite,
             child: BasicButton(
-              onPressed: () {},
+              onPressed: () {
+                CartInfoModel info = CartInfoModel(
+                    id: 0,
+                    name: 'goods1',
+                    price: 59.09,
+                    image: '',
+                    count: _count,
+                    color: _filter['color'] ?? '',
+                    size: _filter['size'] ?? '');
+                Navigator.of(context).pop();
+              },
               size: BasicButtonSize.large,
               child: const Text('确认'),
             ),
@@ -153,7 +163,7 @@ class _GoodsCartPannelState extends State<GoodsCartPannel> {
                   style: AppTheme.caption.copyWith(fontSize: 14),
                 ),
               ),
-              const Text('已选 04白色, L'),
+              Text("已选 ${_filter['color']}，${_filter['size']}"),
             ],
           ),
         )
