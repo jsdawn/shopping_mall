@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/components/basic_button.dart';
 import 'package:shopping_mall/components/show_basic_bottom_sheet.dart';
+import 'package:shopping_mall/models/cart_info_model.dart';
 import 'package:shopping_mall/widgets/goods/goods_props_pannel.dart';
 
 class DetailFooterBar extends StatefulWidget {
@@ -15,13 +16,20 @@ class DetailFooterBar extends StatefulWidget {
 
 class _DetailFooterBarState extends State<DetailFooterBar> {
   // 当前商品购物属性过滤器
-  late Map<dynamic, String> cartFilter;
+  late CartInfoModel _cartInfo;
 
   @override
   void initState() {
     super.initState();
     // 初始化商品购物属性
-    cartFilter = {"color": "白色", "size": "S"};
+    _cartInfo = CartInfoModel(
+        id: 0,
+        name: 'goods1',
+        price: 59.09,
+        image: '',
+        count: 0,
+        color: '',
+        size: '');
   }
 
   @override
@@ -85,6 +93,8 @@ class _DetailFooterBarState extends State<DetailFooterBar> {
 
   void _showGoodsPropsSheet(BuildContext context) {
     showBasicBottomSheet(
-        context: context, child: GoodsCartPannel(cartFilter: cartFilter));
+      context: context,
+      child: GoodsCartPannel(cartInfo: _cartInfo),
+    );
   }
 }

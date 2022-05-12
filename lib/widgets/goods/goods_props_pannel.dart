@@ -5,17 +5,16 @@ import 'package:shopping_mall/components/num_counter.dart';
 import 'package:shopping_mall/models/cart_info_model.dart';
 
 class GoodsCartPannel extends StatefulWidget {
-  const GoodsCartPannel({Key? key, required this.cartFilter}) : super(key: key);
+  const GoodsCartPannel({Key? key, required this.cartInfo}) : super(key: key);
 
-  final Map<dynamic, String> cartFilter;
+  final CartInfoModel cartInfo;
 
   @override
   State<GoodsCartPannel> createState() => _GoodsCartPannelState();
 }
 
 class _GoodsCartPannelState extends State<GoodsCartPannel> {
-  int _count = 1;
-  late Map<dynamic, String> _filter;
+  late CartInfoModel _cartInfo;
 
   List<String> colorOptions = ['白色', '灰色', '深蓝色', '黑色'];
   List<String> sizeOptions = ['S', 'M', 'L', 'XL', 'XXL'];
@@ -23,7 +22,7 @@ class _GoodsCartPannelState extends State<GoodsCartPannel> {
   @override
   void initState() {
     super.initState();
-    _filter = widget.cartFilter;
+    _cartInfo = widget.cartInfo;
   }
 
   @override
@@ -51,10 +50,10 @@ class _GoodsCartPannelState extends State<GoodsCartPannel> {
                 ),
                 _propsSelector(
                   colorOptions,
-                  actived: _filter['color'],
+                  actived: _cartInfo.color,
                   onChange: (newActived) {
                     setState(() {
-                      _filter['color'] = newActived;
+                      _cartInfo.color = newActived;
                     });
                   },
                 ),
@@ -64,10 +63,10 @@ class _GoodsCartPannelState extends State<GoodsCartPannel> {
                 ),
                 _propsSelector(
                   sizeOptions,
-                  actived: _filter['size'],
+                  actived: _cartInfo.size,
                   onChange: (newActived) {
                     setState(() {
-                      _filter['size'] = newActived;
+                      _cartInfo.size = newActived;
                     });
                   },
                 ),
@@ -79,10 +78,10 @@ class _GoodsCartPannelState extends State<GoodsCartPannel> {
                     NumCounter(
                       onChange: (newCount) {
                         setState(() {
-                          _count = newCount;
+                          _cartInfo.count = newCount;
                         });
                       },
-                      count: _count,
+                      count: _cartInfo.count,
                     ),
                   ],
                 ),
@@ -100,14 +99,7 @@ class _GoodsCartPannelState extends State<GoodsCartPannel> {
             color: AppTheme.nearlyWhite,
             child: BasicButton(
               onPressed: () {
-                CartInfoModel info = CartInfoModel(
-                    id: 0,
-                    name: 'goods1',
-                    price: 59.09,
-                    image: '',
-                    count: _count,
-                    color: _filter['color'] ?? '',
-                    size: _filter['size'] ?? '');
+                print(_cartInfo);
                 Navigator.of(context).pop();
               },
               size: BasicButtonSize.large,
@@ -163,7 +155,7 @@ class _GoodsCartPannelState extends State<GoodsCartPannel> {
                   style: AppTheme.caption.copyWith(fontSize: 14),
                 ),
               ),
-              Text("已选 ${_filter['color']}，${_filter['size']}"),
+              Text("已选 ${_cartInfo.color}，${_cartInfo.size}"),
             ],
           ),
         )
