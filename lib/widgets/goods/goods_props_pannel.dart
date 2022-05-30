@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/components/basic_button.dart';
 import 'package:shopping_mall/components/num_counter.dart';
 import 'package:shopping_mall/models/cart_info_model.dart';
+import 'package:shopping_mall/providers/cart_provider.dart';
 
-class GoodsCartPannel extends StatefulWidget {
+class GoodsCartPannel extends ConsumerStatefulWidget {
   const GoodsCartPannel({Key? key, required this.cartInfo}) : super(key: key);
 
   final CartInfoModel cartInfo;
 
   @override
-  State<GoodsCartPannel> createState() => _GoodsCartPannelState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _GoodsCartPannelState();
 }
 
-class _GoodsCartPannelState extends State<GoodsCartPannel> {
+class _GoodsCartPannelState extends ConsumerState<GoodsCartPannel> {
   late CartInfoModel _cartInfo;
 
   List<String> colorOptions = ['白色', '灰色', '深蓝色', '黑色'];
@@ -99,7 +102,7 @@ class _GoodsCartPannelState extends State<GoodsCartPannel> {
             color: AppTheme.nearlyWhite,
             child: BasicButton(
               onPressed: () {
-                print(_cartInfo);
+                ref.read(cartProvider.notifier).pushCart(_cartInfo);
                 Navigator.of(context).pop();
               },
               size: BasicButtonSize.large,

@@ -10,33 +10,38 @@ class CartNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  // 更新列表
-  update(CartInfoModel cartInfo) {
-    cartList.removeWhere((item) => item.id == cartInfo.id);
-    cartList.add(cartInfo);
+  // 加入购物车
+  pushCart(CartInfoModel cartInfo) {
+    int idx = cartList.indexWhere((item) => (item.id == cartInfo.id &&
+        item.color == cartInfo.color &&
+        item.size == cartInfo.size));
+    if (idx > -1) {
+      cartList[idx].count += cartInfo.count;
+    } else {
+      cartList.add(cartInfo);
+    }
+    notifyListeners();
+  }
+
+  // 商品数量加减
+  addOrReduceAction(int idx, String type) {
+    if (type == 'add') {
+      cartList[idx].count++;
+    } else if (type == 'reduce') {
+      cartList[idx].count--;
+    }
     notifyListeners();
   }
 
   // 移除某项
-  remove(int id) {
-    cartList.removeWhere((item) => item.id == id);
+  remove(int idx) {
+    cartList.removeAt(idx);
     notifyListeners();
   }
 
   // 清空购物车
   clear() {
     cartList.clear();
-    notifyListeners();
-  }
-
-  // 商品数量加减
-  addOrReduceAction(int id, String type) {
-    int idx = cartList.indexWhere((item) => item.id == id);
-    if (type == 'add') {
-      cartList[idx].count++;
-    } else if (type == 'reduce') {
-      cartList[idx].count--;
-    }
     notifyListeners();
   }
 }

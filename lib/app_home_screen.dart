@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_mall/components/navigation_with_view.dart';
+import 'package:shopping_mall/views/cart/cart_index.dart';
 import 'package:shopping_mall/views/goods/goods_index.dart';
 import 'package:shopping_mall/views/home/home_index.dart';
 
@@ -14,9 +15,7 @@ class AppHomeScreen extends StatelessWidget {
         label: '全部商品',
         body: Center(child: GoodsIndex())),
     NavIconData(
-        icon: Icons.shopping_cart_outlined,
-        label: '购物车',
-        body: Center(child: Text('购物车'))),
+        icon: Icons.shopping_cart_outlined, label: '购物车', body: CartIndex()),
     NavIconData(
         icon: Icons.account_circle_outlined,
         label: '我的',
@@ -25,8 +24,18 @@ class AppHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int _position = 0;
+
+    if (ModalRoute.of(context)?.settings.arguments != null) {
+      Map args = ModalRoute.of(context)?.settings.arguments as Map;
+      if (args['tab'] != null) {
+        _position = args['tab'];
+      }
+    }
+
     return NavigationWithView(
       items: _navigationWithViewItems,
+      position: _position,
     );
   }
 }

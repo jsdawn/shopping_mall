@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
       systemNavigationBarDividerColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
+
     return MaterialApp(
       title: 'Flutter UI',
       debugShowCheckedModeBanner: false,
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         textTheme: AppTheme.textTheme,
       ),
       onGenerateRoute: onGenerateRoute,
+      initialRoute: '/',
       home: const AppHomeScreen(),
     );
   }

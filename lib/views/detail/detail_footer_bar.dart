@@ -27,7 +27,7 @@ class _DetailFooterBarState extends State<DetailFooterBar> {
         name: 'goods1',
         price: 59.09,
         image: '',
-        count: 0,
+        count: 1,
         color: '',
         size: '');
   }
@@ -54,9 +54,22 @@ class _DetailFooterBarState extends State<DetailFooterBar> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _footerIconButton(Icons.home_outlined, '首页'),
-                _footerIconButton(Icons.shopping_cart_outlined, '购物车'),
-                _footerIconButton(Icons.account_circle_outlined, '我的'),
+                _footerIconButton(Icons.home_outlined, '首页', onTap: () {
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil('/', (route) => false);
+                }),
+                _footerIconButton(Icons.shopping_cart_outlined, '购物车',
+                    onTap: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/', (route) => false,
+                      arguments: {'tab': 2});
+                }),
+                _footerIconButton(Icons.account_circle_outlined, '我的',
+                    onTap: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/', (route) => false,
+                      arguments: {'tab': 3});
+                }),
               ],
             ),
           ),
@@ -75,18 +88,23 @@ class _DetailFooterBarState extends State<DetailFooterBar> {
     );
   }
 
-  Widget _footerIconButton(IconData iconData, String label) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(iconData, size: 25),
-          Padding(
-            padding: const EdgeInsets.only(top: 1.0),
-            child: Text(label, style: AppTheme.caption.copyWith(fontSize: 11)),
-          ),
-        ],
+  Widget _footerIconButton(IconData iconData, String label,
+      {Function()? onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(iconData, size: 25),
+            Padding(
+              padding: const EdgeInsets.only(top: 1.0),
+              child:
+                  Text(label, style: AppTheme.caption.copyWith(fontSize: 11)),
+            ),
+          ],
+        ),
       ),
     );
   }

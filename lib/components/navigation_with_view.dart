@@ -3,8 +3,11 @@ import 'package:shopping_mall/app_theme.dart';
 
 class NavigationWithView extends StatefulWidget {
   final List<NavIconData> items;
+  final int position;
 
-  const NavigationWithView({Key? key, required this.items}) : super(key: key);
+  const NavigationWithView(
+      {Key? key, required this.items, required this.position})
+      : super(key: key);
 
   @override
   State<NavigationWithView> createState() => _NavigationWithViewState();
@@ -17,6 +20,9 @@ class _NavigationWithViewState extends State<NavigationWithView> {
 
   @override
   void initState() {
+    setState(() {
+      _position = widget.position;
+    });
     _pageController = PageController(initialPage: _position);
     super.initState();
   }
