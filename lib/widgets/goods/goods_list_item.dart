@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_mall/app_theme.dart';
+import 'package:shopping_mall/widgets/goods/goods_price.dart';
 
 class GoodsListItem extends StatelessWidget {
   const GoodsListItem({Key? key}) : super(key: key);
@@ -32,42 +33,13 @@ class GoodsListItem extends StatelessWidget {
               maxLines: 2,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 2.0),
-            child: _priceCell(),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _priceCell() {
-    return RichText(
-      text: const TextSpan(
-        text: '￥',
-        style: TextStyle(
-            color: AppTheme.primaryColor,
-            fontSize: 12,
-            fontWeight: FontWeight.bold),
-        children: [
-          TextSpan(
-            text: '59',
-            style: TextStyle(fontSize: 18),
-          ),
-          TextSpan(
-            text: '.09 ',
-            style: TextStyle(fontSize: 11),
-          ),
-          if (true)
-            TextSpan(
-              text: '￥69.9',
-              style: TextStyle(
-                  color: AppTheme.deactivatedText,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w300,
-                  letterSpacing: -0.8,
-                  decoration: TextDecoration.lineThrough),
+          const Padding(
+            padding: EdgeInsets.only(top: 2.0),
+            child: GoodsPrice(
+              price: 59.06,
+              originalPrice: 69.9,
             ),
+          )
         ],
       ),
     );

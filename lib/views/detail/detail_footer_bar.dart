@@ -24,7 +24,7 @@ class _DetailFooterBarState extends State<DetailFooterBar> {
     // 初始化商品购物属性
     _cartInfo = CartInfoModel(
         id: 0,
-        name: 'goods1',
+        title: 'goods1',
         price: 59.09,
         image: '',
         count: 1,
@@ -60,9 +60,7 @@ class _DetailFooterBarState extends State<DetailFooterBar> {
                 }),
                 _footerIconButton(Icons.shopping_cart_outlined, '购物车',
                     onTap: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/', (route) => false,
-                      arguments: {'tab': 2});
+                  Navigator.of(context).pushNamed('/', arguments: {'tab': 2});
                 }),
                 _footerIconButton(Icons.account_circle_outlined, '我的',
                     onTap: () {

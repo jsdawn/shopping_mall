@@ -5,12 +5,13 @@ class NumCounter extends StatelessWidget {
   const NumCounter({
     Key? key,
     required this.count,
-    int? maxCount,
+    this.minCount = 1,
+    this.maxCount = 10,
     this.onChange,
-  })  : maxCount = maxCount ?? 10,
-        super(key: key);
+  }) : super(key: key);
 
   final int count;
+  final int? minCount;
   final int? maxCount;
 
   final void Function(int count)? onChange;
@@ -22,7 +23,7 @@ class NumCounter extends StatelessWidget {
       children: [
         _iconBtn(
           Icons.remove,
-          disabled: count <= 1,
+          disabled: count <= minCount!,
           onTap: () {
             if (onChange != null) {
               onChange!(count - 1);

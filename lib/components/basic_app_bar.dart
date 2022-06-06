@@ -20,7 +20,7 @@ class _BasicAppBarState extends State<BasicAppBar> {
   @override
   PreferredSizeWidget build(BuildContext context) {
     return AppBar(
-      leading: const BackButton(),
+      // leading: const BackButton(), // AppBar可自动识别是否存在返回页
       title: widget.title,
       actions: widget.actions,
       backgroundColor: AppTheme.nearlyWhite,
