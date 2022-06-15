@@ -1,0 +1,359 @@
+[
+  {
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "title": "么进反放以",
+    "color": "黄色,蓝色,白色,黑色",
+    "originalPrice": 69.723,
+    "size": "M,L,XS,S",
+    "inventory": 674,
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "price": 80.532,
+    "count": 92,
+    "id": 1,
+    "shopId": 51
+  },
+  {
+    "id": 2,
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "title": "素次程进毛做",
+    "inventory": 708,
+    "shopId": 16,
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "color": "黄色,黑色,白色,蓝色",
+    "originalPrice": 84.3531,
+    "size": "M,L,XS,S",
+    "price": 92.63085,
+    "count": 61
+  },
+  {
+    "inventory": 631,
+    "title": "已例才光",
+    "color": "蓝色,白色,黄色,黑色",
+    "count": 96,
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "size": "M,S,L,XS",
+    "originalPrice": 75.2764,
+    "price": 65.2838,
+    "shopId": 23,
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "id": 3
+  },
+  {
+    "title": "花向表",
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "inventory": 751,
+    "price": 77.4648,
+    "shopId": 79,
+    "id": 4,
+    "size": "S,L,M,XS",
+    "color": "蓝色,白色,黑色,黄色",
+    "count": 96,
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "originalPrice": 80.3446
+  },
+  {
+    "color": "白色,黄色,蓝色,黑色",
+    "count": 96,
+    "size": "S,L,M,XS",
+    "shopId": 15,
+    "inventory": 510,
+    "images": ["http://dummyimage.com/500x300/6A7875&text=shopping%20mall"],
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "originalPrice": 77.807,
+    "price": 66.12334,
+    "id": 5,
+    "title": "己我整品置了社"
+  },
+  {
+    "id": 6,
+    "title": "说声活",
+    "inventory": 764,
+    "originalPrice": 63.81777,
+    "color": "白色,黄色,蓝色,黑色",
+    "shopId": 33,
+    "count": 86,
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "price": 82.6476,
+    "size": "S,L,M,XS",
+    "images": ["http://dummyimage.com/500x300/6A7875&text=shopping%20mall"]
+  },
+  {
+    "shopId": 71,
+    "inventory": 605,
+    "size": "M,L,S,XS",
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "count": 84,
+    "originalPrice": 99.9417,
+    "title": "制量动存",
+    "id": 7,
+    "color": "黑色,黄色,蓝色,白色",
+    "price": 93.88196
+  },
+  {
+    "count": 74,
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "inventory": 501,
+    "id": 8,
+    "price": 83.6608,
+    "title": "外与青本每证",
+    "color": "黄色,蓝色,黑色,白色",
+    "originalPrice": 90.5846,
+    "shopId": 85,
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "size": "S,L,XS,M"
+  },
+  {
+    "size": "S,M,L,XS",
+    "title": "矿理会空格",
+    "shopId": 99,
+    "price": 91.477,
+    "count": 61,
+    "originalPrice": 63.6482,
+    "inventory": 705,
+    "images": ["http://dummyimage.com/500x300/6A7875&text=shopping%20mall"],
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "id": 9,
+    "color": "黄色,蓝色,黑色,白色"
+  },
+  {
+    "price": 73.5175,
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "title": "期合商织布利国",
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "id": 10,
+    "originalPrice": 78.4478,
+    "shopId": 82,
+    "color": "蓝色,白色,黄色,黑色",
+    "count": 87,
+    "inventory": 552,
+    "size": "M,S,L,XS"
+  },
+  {
+    "count": 70,
+    "color": "蓝色,白色,黑色,黄色",
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "originalPrice": 88.867,
+    "title": "等太毛今处包是",
+    "id": 11,
+    "images": ["http://dummyimage.com/500x300/6A7875&text=shopping%20mall"],
+    "inventory": 641,
+    "price": 61.4548,
+    "size": "S,M,L,XS",
+    "shopId": 89
+  },
+  {
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "title": "花事比列增验万",
+    "inventory": 512,
+    "price": 73.7257,
+    "originalPrice": 76.946,
+    "size": "M,L,XS,S",
+    "id": 12,
+    "count": 70,
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "shopId": 19,
+    "color": "蓝色,黑色,白色,黄色"
+  },
+  {
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "count": 81,
+    "id": 13,
+    "price": 84.174,
+    "size": "M,S,L,XS",
+    "title": "象外素数论圆",
+    "inventory": 689,
+    "color": "蓝色,白色,黄色,黑色",
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "shopId": 68,
+    "originalPrice": 94.0312
+  },
+  {
+    "size": "M,L,XS,S",
+    "price": 63.8432,
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "shopId": 64,
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "inventory": 799,
+    "color": "黄色,黑色,白色,蓝色",
+    "originalPrice": 61.7432,
+    "id": 14,
+    "count": 95,
+    "title": "社做红身对"
+  },
+  {
+    "inventory": 610,
+    "originalPrice": 96.2501,
+    "id": 15,
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "shopId": 55,
+    "color": "黄色,白色,蓝色,黑色",
+    "title": "没育示知如相",
+    "count": 73,
+    "size": "S,M,L,XS",
+    "price": 82.1033,
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+  },
+  {
+    "title": "什天相通",
+    "shopId": 73,
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "inventory": 635,
+    "id": 16,
+    "price": 90.2658,
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "size": "L,XS,M,S",
+    "count": 82,
+    "originalPrice": 78.4455,
+    "color": "黄色,黑色,白色,蓝色"
+  },
+  {
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "price": 90.2813,
+    "count": 93,
+    "color": "黄色,白色,蓝色,黑色",
+    "inventory": 632,
+    "id": 17,
+    "originalPrice": 82.3565,
+    "title": "变过更如",
+    "shopId": 7,
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "size": "M,XS,L,S"
+  },
+  {
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "title": "些候解做",
+    "color": "黄色,白色,蓝色,黑色",
+    "originalPrice": 74.9434,
+    "inventory": 520,
+    "size": "M,XS,L,S",
+    "count": 67,
+    "id": 18,
+    "shopId": 49,
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "price": 67.3775
+  },
+  {
+    "id": 19,
+    "shopId": 50,
+    "inventory": 706,
+    "title": "至全感权接济林",
+    "price": 66.752,
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "size": "M,XS,S,L",
+    "images": ["http://dummyimage.com/500x300/6A7875&text=shopping%20mall"],
+    "originalPrice": 84.2865,
+    "count": 88,
+    "color": "黄色,蓝色,白色,黑色"
+  },
+  {
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "inventory": 602,
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "color": "蓝色,白色,黑色,黄色",
+    "title": "等也件证放第国",
+    "size": "XS,M,L,S",
+    "originalPrice": 60.9874,
+    "count": 73,
+    "price": 98.0214,
+    "shopId": 95,
+    "id": 20
+  },
+  {
+    "originalPrice": 79.1446,
+    "id": 21,
+    "shopId": 50,
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "price": 94.3117,
+    "size": "S,L,XS,M",
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "color": "黄色,蓝色,黑色,白色",
+    "count": 78,
+    "title": "放没县住出包",
+    "inventory": 769
+  },
+  {
+    "title": "龙速百体成风",
+    "inventory": 622,
+    "shopId": 67,
+    "color": "黑色,白色,黄色,蓝色",
+    "images": [
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+      "http://dummyimage.com/500x300/6A7875&text=shopping%20mall"
+    ],
+    "originalPrice": 71.77566,
+    "cover": "http://dummyimage.com/500x300/6A7875&text=shopping%20mall",
+    "price": 67.5258,
+    "size": "L,S,XS,M",
+    "count": 98,
+    "id": 22
+  }
+]

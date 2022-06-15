@@ -80,7 +80,7 @@ class BasicButton extends StatelessWidget {
             : (backgroundColor ?? AppTheme.primaryColor),
         side: side,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(round! ? 30 : 8))),
+            borderRadius: BorderRadius.all(Radius.circular(round! ? 30 : 5))),
         textStyle: textStyle ?? buttonTextStyle,
       ),
       child: child,

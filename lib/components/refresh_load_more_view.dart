@@ -38,21 +38,26 @@ class _RefreshLoadMoreViewState extends State<RefreshLoadMoreView> {
     }
   }
 
+  void _loadAction() {
+    if (!widget.isFinished && widget.onLoadMore != null) {
+      _updateLoading(true);
+      widget.onLoadMore!().then((value) {
+        _updateLoading(false);
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     _scrollController = ScrollController();
+    _loadAction();
 
-    _scrollController.addListener(() async {
+    _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
         if (_isLoading) return;
-
-        if (!widget.isFinished && widget.onLoadMore != null) {
-          _updateLoading(true);
-          await widget.onLoadMore!();
-          _updateLoading(false);
-        }
+        _loadAction();
       }
     });
   }

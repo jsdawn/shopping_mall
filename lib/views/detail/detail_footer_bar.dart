@@ -108,6 +108,9 @@ class _DetailFooterBarState extends State<DetailFooterBar> {
   }
 
   void _showGoodsPropsSheet(BuildContext context) {
+    setState(() {
+      _cartInfo.count = 1;
+    });
     showBasicBottomSheet(
       context: context,
       child: GoodsCartPannel(cartInfo: _cartInfo),

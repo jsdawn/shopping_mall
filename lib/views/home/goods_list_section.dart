@@ -12,14 +12,18 @@ class GoodsListSection extends StatelessWidget {
       children: [
         const Padding(
           padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
-          child: GoodsList(),
+          child: GoodsList([1, 1, 1, 1, 1, 1, 1, 1]),
         ),
         Container(
           padding: const EdgeInsets.symmetric(vertical: 12),
           color: AppTheme.chipBackground,
           child: Center(
             child: BasicButton.outline(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/', (route) => false,
+                    arguments: {'tab': 1});
+              },
               child: const Text('前往查看更多'),
             ),
           ),

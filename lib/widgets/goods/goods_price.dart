@@ -33,7 +33,7 @@ class GoodsPrice extends StatelessWidget {
     if (size == GoodsPriceSize.large) {
       return 16;
     }
-    return 11;
+    return 12;
   }
 
   double get textFontSize4 {
@@ -50,7 +50,7 @@ class GoodsPrice extends StatelessWidget {
   }
 
   String get price2 {
-    if (price == null) return '0';
+    if (price == null) return '00';
     List<String> arr = price!.toString().split('.');
     return arr[1];
   }

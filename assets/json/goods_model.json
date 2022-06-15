@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "title": "xx",
+  "price": 10.0,
+  "originalPrice": 100.0,
+  "cover": "http://xxx.png",
+  "inventory": 100,
+  "count": 50,
+  "color": "白色,黑色,黄色",
+  "size": "S,M,L",
+  "images": ["http://xxx.png", "http://xxx.png", "http://xxx.png"],
+  "shopId": 1
+}
