@@ -10,17 +10,21 @@ class ApiUtil {
     // Json模拟请求
     String jsonString =
         await rootBundle.loadString('assets/json/mock_goods_list.json');
-    await Future.delayed(const Duration(seconds: 1));
-    int start = (page! - 1) * size!;
-    int end = page * size;
+    await Future.delayed(const Duration(milliseconds: 500));
     List<GoodsModel> list = goodsModelListFromJson(jsonString);
-    if (page.isNaN) return list;
+    if (page == null) return list;
+
+    int start = (page - 1) * size!;
+    int end = page * size;
     if (start >= list.length) return [];
     return list.sublist(start, end >= list.length ? null : end);
   }
 
+  /// 获取商品详情
   static Future<GoodsModel> getGoodsDetail(int id) async {
     List<GoodsModel> list = await ApiUtil.getGoodsList();
-    return list.firstWhere((item) => item.id == id);
+    GoodsModel detail = list.firstWhere((item) => item.id == id);
+
+    return detail;
   }
 }

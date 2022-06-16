@@ -20,7 +20,7 @@ class GoodsModel {
     required this.originalPrice,
     required this.cover,
     required this.inventory,
-    required this.count,
+    required this.sold,
     required this.color,
     required this.size,
     required this.images,
@@ -33,11 +33,19 @@ class GoodsModel {
   double originalPrice;
   String cover;
   int inventory;
-  int count;
+  int sold;
   String color;
   String size;
   List<String> images;
   int shopId;
+
+  List<String> get colorOptions {
+    return color.split(',');
+  }
+
+  List<String> get sizeOptions {
+    return size.split(',');
+  }
 
   factory GoodsModel.fromJson(Map<String, dynamic> json) => GoodsModel(
         id: json["id"],
@@ -46,7 +54,7 @@ class GoodsModel {
         originalPrice: json["originalPrice"],
         cover: json["cover"],
         inventory: json["inventory"],
-        count: json["count"],
+        sold: json["sold"],
         color: json["color"],
         size: json["size"],
         images: List<String>.from(json["images"].map((x) => x)),
@@ -60,7 +68,7 @@ class GoodsModel {
         "originalPrice": originalPrice,
         "cover": cover,
         "inventory": inventory,
-        "count": count,
+        "sold": sold,
         "color": color,
         "size": size,
         "images": List<dynamic>.from(images.map((x) => x)),

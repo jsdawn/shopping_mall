@@ -1,35 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/components/basic_button.dart';
 import 'package:shopping_mall/components/show_basic_bottom_sheet.dart';
 import 'package:shopping_mall/models/cart_info_model.dart';
+import 'package:shopping_mall/models/goods_model.dart';
+import 'package:shopping_mall/providers/goods_provider.dart';
 import 'package:shopping_mall/widgets/goods/goods_props_pannel.dart';
 
-class DetailFooterBar extends StatefulWidget {
+class DetailFooterBar extends ConsumerStatefulWidget {
   const DetailFooterBar({Key? key}) : super(key: key);
 
   static double height = 55;
 
   @override
-  State<DetailFooterBar> createState() => _DetailFooterBarState();
+  ConsumerState<DetailFooterBar> createState() => _DetailFooterBarState();
 }
 
-class _DetailFooterBarState extends State<DetailFooterBar> {
+class _DetailFooterBarState extends ConsumerState<DetailFooterBar> {
   // 当前商品购物属性过滤器
   late CartInfoModel _cartInfo;
+  late GoodsModel _goodsDetail;
 
   @override
   void initState() {
     super.initState();
+    // initState 只能 read
+    _goodsDetail = ref.read(goodsProvider);
     // 初始化商品购物属性
     _cartInfo = CartInfoModel(
-        id: 0,
-        title: 'goods1',
-        price: 59.09,
-        image: '',
+        id: _goodsDetail.id,
+        title: _goodsDetail.title,
+        price: _goodsDetail.price,
+        image: _goodsDetail.cover,
         count: 1,
-        color: '',
-        size: '');
+        color: _goodsDetail.colorOptions[0],
+        size: _goodsDetail.sizeOptions[0]);
   }
 
   @override
@@ -113,7 +119,10 @@ class _DetailFooterBarState extends State<DetailFooterBar> {
     });
     showBasicBottomSheet(
       context: context,
-      child: GoodsCartPannel(cartInfo: _cartInfo),
+      child: GoodsCartPannel(
+        cartInfo: _cartInfo,
+        goodsDetail: _goodsDetail,
+      ),
     );
   }
 }

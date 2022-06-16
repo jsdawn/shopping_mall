@@ -3,15 +3,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_mall/models/cart_info_model.dart';
 
 class CartNotifier extends ChangeNotifier {
-  List<CartInfoModel> cartList = <CartInfoModel>[];
+  final List<CartInfoModel> cartList = <CartInfoModel>[];
 
   setCartList(List<CartInfoModel> list) {
-    cartList = list;
+    cartList.clear();
+    cartList.addAll(list);
     notifyListeners();
   }
 
   // 加入购物车
-  pushCart(CartInfoModel cartInfo) {
+  void pushCart(CartInfoModel cartInfo) {
     int idx = cartList.indexWhere((item) => (item.id == cartInfo.id &&
         item.color == cartInfo.color &&
         item.size == cartInfo.size));
@@ -24,7 +25,7 @@ class CartNotifier extends ChangeNotifier {
   }
 
   // 商品数量加减
-  addOrReduceAction(int idx, String type) {
+  void addOrReduceAction(int idx, String type) {
     if (type == 'add') {
       cartList[idx].count++;
     } else if (type == 'reduce') {
@@ -34,18 +35,18 @@ class CartNotifier extends ChangeNotifier {
   }
 
   // 移除某项
-  remove(int idx) {
+  void remove(int idx) {
     cartList.removeAt(idx);
     notifyListeners();
   }
 
   // 清空购物车
-  clear() {
+  void clear() {
     cartList.clear();
     notifyListeners();
   }
 }
 
-final cartProvider = ChangeNotifierProvider<CartNotifier>((ref) {
+final cartProvider = ChangeNotifierProvider.autoDispose<CartNotifier>((ref) {
   return CartNotifier();
 });

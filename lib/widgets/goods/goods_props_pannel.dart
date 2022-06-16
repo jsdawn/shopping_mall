@@ -4,12 +4,17 @@ import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/components/basic_button.dart';
 import 'package:shopping_mall/components/num_counter.dart';
 import 'package:shopping_mall/models/cart_info_model.dart';
+import 'package:shopping_mall/models/goods_model.dart';
 import 'package:shopping_mall/providers/cart_provider.dart';
+import 'package:shopping_mall/widgets/goods/goods_price.dart';
 
 class GoodsCartPannel extends ConsumerStatefulWidget {
-  const GoodsCartPannel({Key? key, required this.cartInfo}) : super(key: key);
+  const GoodsCartPannel(
+      {Key? key, required this.cartInfo, required this.goodsDetail})
+      : super(key: key);
 
   final CartInfoModel cartInfo;
+  final GoodsModel goodsDetail;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -18,9 +23,6 @@ class GoodsCartPannel extends ConsumerStatefulWidget {
 
 class _GoodsCartPannelState extends ConsumerState<GoodsCartPannel> {
   late CartInfoModel _cartInfo;
-
-  List<String> colorOptions = ['白色', '灰色', '深蓝色', '黑色'];
-  List<String> sizeOptions = ['S', 'M', 'L', 'XL', 'XXL'];
 
   @override
   void initState() {
@@ -46,7 +48,7 @@ class _GoodsCartPannelState extends ConsumerState<GoodsCartPannel> {
                   child: Text('颜色', style: AppTheme.body1),
                 ),
                 _propsSelector(
-                  colorOptions,
+                  widget.goodsDetail.colorOptions,
                   actived: _cartInfo.color,
                   onChange: (newActived) {
                     setState(() {
@@ -59,7 +61,7 @@ class _GoodsCartPannelState extends ConsumerState<GoodsCartPannel> {
                   child: Text('尺寸', style: AppTheme.body1),
                 ),
                 _propsSelector(
-                  sizeOptions,
+                  widget.goodsDetail.sizeOptions,
                   actived: _cartInfo.size,
                   onChange: (newActived) {
                     setState(() {
@@ -116,7 +118,7 @@ class _GoodsCartPannelState extends ConsumerState<GoodsCartPannel> {
         Padding(
           padding: const EdgeInsets.only(right: 15.0),
           child: Image.network(
-            'https://unpkg.com/@jsdawn/assets/images/mall/Clothes1.jpg',
+            widget.goodsDetail.cover,
             fit: BoxFit.contain,
             width: 90,
             height: 90,
@@ -126,29 +128,14 @@ class _GoodsCartPannelState extends ConsumerState<GoodsCartPannel> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              RichText(
-                text: const TextSpan(
-                  text: '￥',
-                  style: TextStyle(
-                      color: AppTheme.primaryColor,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                  children: [
-                    TextSpan(
-                      text: '59',
-                      style: TextStyle(fontSize: 24),
-                    ),
-                    TextSpan(
-                      text: '.09 ',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ],
-                ),
+              GoodsPrice(
+                price: widget.goodsDetail.price,
+                size: GoodsPriceSize.large,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 3),
                 child: Text(
-                  '库存 286',
+                  '库存 ${widget.goodsDetail.inventory}',
                   style: AppTheme.caption.copyWith(fontSize: 14),
                 ),
               ),
