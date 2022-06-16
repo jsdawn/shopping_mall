@@ -15,7 +15,9 @@ class GoodsIndex extends StatefulWidget {
 
 class _GoodsIndexState extends State<GoodsIndex> {
   bool _isFinished = false;
-  List list = [];
+  List<GoodsModel> list = [];
+  int page = 1;
+  int size = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +31,15 @@ class _GoodsIndexState extends State<GoodsIndex> {
           child: RefreshLoadMoreView(
             isFinished: _isFinished,
             onLoadMore: () async {
-              // await Future.delayed(const Duration(seconds: 2), () {});
-              // List newList = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-              List<GoodsModel> newList = await ApiUtil.getGoodsList();
+              List<GoodsModel> newList =
+                  await ApiUtil.getGoodsList(page: page, size: size);
               if (!mounted) return;
               list.addAll(newList);
-              if (list.length > 30) {
+              // 数据不足一页 - 没有更多，加载完成
+              if (newList.length < size) {
                 _isFinished = true;
               }
+              page++;
               setState(() {});
             },
             child: Padding(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_mall/components/navigation_with_view.dart';
+import 'package:shopping_mall/utils/helper_util.dart';
 import 'package:shopping_mall/views/cart/cart_index.dart';
 import 'package:shopping_mall/views/goods/goods_index.dart';
 import 'package:shopping_mall/views/home/home_index.dart';
@@ -24,14 +25,7 @@ class AppHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int _position = 0;
-
-    if (ModalRoute.of(context)?.settings.arguments != null) {
-      Map args = ModalRoute.of(context)?.settings.arguments as Map;
-      if (args['tab'] != null) {
-        _position = args['tab'];
-      }
-    }
+    int _position = HelperUtil.getRouteParam(context, 'tab') ?? 0;
 
     return NavigationWithView(
       items: _navigationWithViewItems,

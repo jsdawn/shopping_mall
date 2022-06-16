@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ListToolbar extends StatefulWidget {
-  ListToolbar({Key? key}) : super(key: key);
+  const ListToolbar({Key? key}) : super(key: key);
 
   @override
   State<ListToolbar> createState() => _ListToolbarState();

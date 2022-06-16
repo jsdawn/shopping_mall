@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:shopping_mall/app_theme.dart';
 
@@ -45,13 +43,15 @@ class GoodsPrice extends StatelessWidget {
 
   String get price1 {
     if (price == null) return '0';
-    List<String> arr = price!.toString().split('.');
+    String formatPrice = price!.toStringAsFixed(2);
+    List<String> arr = formatPrice.split('.');
     return arr[0];
   }
 
   String get price2 {
     if (price == null) return '00';
-    List<String> arr = price!.toString().split('.');
+    String formatPrice = price!.toStringAsFixed(2);
+    List<String> arr = formatPrice.split('.');
     return arr[1];
   }
 
@@ -75,7 +75,7 @@ class GoodsPrice extends StatelessWidget {
           ),
           if (originalPrice != null)
             TextSpan(
-              text: '￥$originalPrice',
+              text: '￥${originalPrice!.toStringAsFixed(2)}',
               style: TextStyle(
                   color: AppTheme.deactivatedText,
                   fontSize: textFontSize4,

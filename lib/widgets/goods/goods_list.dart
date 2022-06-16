@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:shopping_mall/models/goods_model.dart';
 import 'package:shopping_mall/widgets/goods/goods_list_item.dart';
 
 class GoodsList extends StatelessWidget {
   const GoodsList(this.list, {Key? key}) : super(key: key);
 
-  final List list;
+  final List<GoodsModel> list;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class GoodsList extends StatelessWidget {
       crossAxisSpacing: 12,
       itemCount: list.length,
       itemBuilder: (context, index) {
-        return const GoodsListItem();
+        return GoodsListItem(list[index]);
       },
     );
   }

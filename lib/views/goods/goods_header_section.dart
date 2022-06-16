@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/components/search_input.dart';
 
 class GoodsHeaderSection extends StatelessWidget {

@@ -29,12 +29,6 @@ class _GoodsCartPannelState extends ConsumerState<GoodsCartPannel> {
   }
 
   @override
-  void didUpdateWidget(GoodsCartPannel oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    print('didUpdateWidget');
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
