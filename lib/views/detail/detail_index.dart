@@ -35,30 +35,29 @@ class _DetailIndexState extends ConsumerState<DetailIndex> {
     return Scaffold(
       backgroundColor: AppTheme.chipBackground,
       appBar: const BasicAppBar(title: Text('详情')),
-      body: GoodsProvederView(id: id, builder: (_) {}),
-      // body: FutureBuilder(
-      //     future: ApiUtil.getGoodsDetail(id),
-      //     builder: (BuildContext ctx, AsyncSnapshot snapshot) {
-      //       return futureBuilderSnapshot(
-      //           context: ctx,
-      //           snapshot: snapshot,
-      //           onSuccess: (data) {
-      //             // ref.read(goodsProvider.notifier).setGoods(data);
-      //           },
-      //           child: Column(children: [
-      //             Expanded(
-      //               child: SingleChildScrollView(
-      //                 child: _buildBodyUI,
-      //               ),
-      //             ),
-      //             Positioned(
-      //               bottom: MediaQuery.of(context).padding.bottom,
-      //               left: 0,
-      //               right: 0,
-      //               child: const DetailFooterBar(),
-      //             )
-      //           ]));
-      //     }),
+      body: FutureBuilder(
+          future: ApiUtil.getGoodsDetail(id),
+          builder: (BuildContext ctx, AsyncSnapshot snapshot) {
+            return futureBuilderSnapshot(
+                context: ctx,
+                snapshot: snapshot,
+                onSuccess: (data) {
+                  ref.read(goodsProvider.notifier).setGoods(data);
+                },
+                child: Column(children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: _buildBodyUI,
+                    ),
+                  ),
+                  Positioned(
+                    bottom: MediaQuery.of(context).padding.bottom,
+                    left: 0,
+                    right: 0,
+                    child: const DetailFooterBar(),
+                  )
+                ]));
+          }),
     );
   }
 
