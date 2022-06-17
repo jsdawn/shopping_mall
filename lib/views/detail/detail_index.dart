@@ -6,6 +6,7 @@ import 'package:shopping_mall/components/basic_app_bar.dart';
 import 'package:shopping_mall/components/future_builder_snapshot.dart';
 import 'package:shopping_mall/models/goods_model.dart';
 import 'package:shopping_mall/providers/goods_provider.dart';
+import 'package:shopping_mall/utils/helper_util.dart';
 import 'package:shopping_mall/views/detail/detail_footer_bar.dart';
 import 'package:shopping_mall/views/detail/detail_header.dart';
 import 'package:shopping_mall/views/detail/shop_title_block.dart';
@@ -19,32 +20,45 @@ class DetailIndex extends ConsumerStatefulWidget {
 }
 
 class _DetailIndexState extends ConsumerState<DetailIndex> {
+  int id = 0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    id = HelperUtil.getRouteParam(context, 'id') ?? 0;
+    setState(() {});
+
     return Scaffold(
       backgroundColor: AppTheme.chipBackground,
       appBar: const BasicAppBar(title: Text('详情')),
-      body: FutureBuilder<GoodsModel>(
-          future: ApiUtil.getGoodsDetail(2),
-          builder: (BuildContext ctx, AsyncSnapshot snapshot) {
-            return futureBuilderSnapshot(
-                context: ctx,
-                snapshot: snapshot,
-                onSuccess: (data) {
-                  ref.read(goodsProvider.notifier).setGoods(data);
-                },
-                child: Stack(children: [
-                  SingleChildScrollView(
-                    child: _buildBodyUI,
-                  ),
-                  Positioned(
-                    bottom: MediaQuery.of(context).padding.bottom,
-                    left: 0,
-                    right: 0,
-                    child: const DetailFooterBar(),
-                  )
-                ]));
-          }),
+      body: GoodsProvederView(id: id, builder: (_) {}),
+      // body: FutureBuilder(
+      //     future: ApiUtil.getGoodsDetail(id),
+      //     builder: (BuildContext ctx, AsyncSnapshot snapshot) {
+      //       return futureBuilderSnapshot(
+      //           context: ctx,
+      //           snapshot: snapshot,
+      //           onSuccess: (data) {
+      //             // ref.read(goodsProvider.notifier).setGoods(data);
+      //           },
+      //           child: Column(children: [
+      //             Expanded(
+      //               child: SingleChildScrollView(
+      //                 child: _buildBodyUI,
+      //               ),
+      //             ),
+      //             Positioned(
+      //               bottom: MediaQuery.of(context).padding.bottom,
+      //               left: 0,
+      //               right: 0,
+      //               child: const DetailFooterBar(),
+      //             )
+      //           ]));
+      //     }),
     );
   }
 

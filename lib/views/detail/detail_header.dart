@@ -29,10 +29,11 @@ class DetailHeader extends ConsumerWidget {
               children: [
                 GoodsPrice(
                   price: goodsDetail.price,
-                  originalPrice: 69.09,
+                  originalPrice: goodsDetail.originalPrice,
                   size: GoodsPriceSize.large,
                 ),
-                Text('已售 ${goodsDetail.sold}', style: AppTheme.caption)
+                Text('已售 ' + goodsDetail.sold.toString(),
+                    style: AppTheme.caption)
               ],
             ),
           ),

@@ -47,6 +47,6 @@ class CartNotifier extends ChangeNotifier {
   }
 }
 
-final cartProvider = ChangeNotifierProvider.autoDispose<CartNotifier>((ref) {
+final cartProvider = ChangeNotifierProvider<CartNotifier>((ref) {
   return CartNotifier();
 });

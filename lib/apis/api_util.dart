@@ -21,10 +21,10 @@ class ApiUtil {
   }
 
   /// 获取商品详情
-  static Future<GoodsModel> getGoodsDetail(int id) async {
+  static Future getGoodsDetail(int id) async {
     List<GoodsModel> list = await ApiUtil.getGoodsList();
-    GoodsModel detail = list.firstWhere((item) => item.id == id);
-
-    return detail;
+    GoodsModel detail = list.firstWhere((item) => item.id == id,
+        orElse: () => GoodsModel.fromJson({}));
+    return detail.id > 0 ? detail : null;
   }
 }
