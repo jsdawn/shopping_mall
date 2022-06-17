@@ -38,25 +38,20 @@ class _DetailIndexState extends ConsumerState<DetailIndex> {
       body: FutureBuilder(
           future: ApiUtil.getGoodsDetail(id),
           builder: (BuildContext ctx, AsyncSnapshot snapshot) {
-            return futureBuilderSnapshot(
+            return FutureBuilderSnapshot(
                 context: ctx,
                 snapshot: snapshot,
-                onSuccess: (data) {
+                builder: (data) {
                   ref.read(goodsProvider.notifier).setGoods(data);
-                },
-                child: Column(children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: _buildBodyUI,
+                  return Column(children: [
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: _buildBodyUI,
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    bottom: MediaQuery.of(context).padding.bottom,
-                    left: 0,
-                    right: 0,
-                    child: const DetailFooterBar(),
-                  )
-                ]));
+                    const DetailFooterBar()
+                  ]);
+                });
           }),
     );
   }

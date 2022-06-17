@@ -6,8 +6,10 @@ import 'package:shopping_mall/widgets/goods/goods_price.dart';
 
 class GoodsCartItem extends StatelessWidget {
   final CartInfoModel item;
+  final void Function(int)? onChangeCount;
 
-  const GoodsCartItem(this.item, {Key? key}) : super(key: key);
+  const GoodsCartItem(this.item, {Key? key, this.onChangeCount})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,16 +40,21 @@ class GoodsCartItem extends StatelessWidget {
                   style: AppTheme.body1,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10),
+                  padding: const EdgeInsets.only(top: 10, bottom: 20),
                   child: Text(
                     '${item.color}/${item.size}',
                     style: AppTheme.caption,
                   ),
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     GoodsPrice(price: item.price),
-                    NumCounter(count: item.count)
+                    NumCounter(
+                      count: item.count,
+                      onChange: onChangeCount,
+                    )
                   ],
                 )
               ],

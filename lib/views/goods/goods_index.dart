@@ -13,14 +13,32 @@ class GoodsIndex extends StatefulWidget {
   State<GoodsIndex> createState() => _GoodsIndexState();
 }
 
-class _GoodsIndexState extends State<GoodsIndex> {
+class _GoodsIndexState extends State<GoodsIndex>
+    with AutomaticKeepAliveClientMixin {
   bool _isFinished = false;
   List<GoodsModel> list = [];
   int page = 1;
   int size = 20;
+  late ScrollController _scrollController;
+
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ColoredBox(
       color: AppTheme.nearlyWhite,
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
@@ -45,7 +63,10 @@ class _GoodsIndexState extends State<GoodsIndex> {
             child: Padding(
               padding: const EdgeInsets.only(
                   top: 10, left: 20, right: 20, bottom: 20),
-              child: GoodsList(list),
+              child: GoodsList(
+                list,
+                controller: _scrollController,
+              ),
             ),
           ),
         ),

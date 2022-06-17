@@ -31,8 +31,8 @@ class NumCounter extends StatelessWidget {
           },
         ),
         Container(
-          height: 30,
-          width: 45,
+          height: 25,
+          width: 35,
           alignment: Alignment.center,
           decoration: const BoxDecoration(
             color: AppTheme.spacer,
@@ -57,7 +57,7 @@ class NumCounter extends StatelessWidget {
     return GestureDetector(
       onTap: disabled! ? null : onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 7),
+        padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 5),
         child: Icon(
           icon,
           color: disabled

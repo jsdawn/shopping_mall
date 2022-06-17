@@ -8,11 +8,16 @@ import 'package:shopping_mall/providers/cart_provider.dart';
 import 'package:shopping_mall/widgets/goods/goods_cart_item.dart';
 import 'package:shopping_mall/widgets/goods/goods_price.dart';
 
-class CartIndex extends ConsumerWidget {
+class CartIndex extends ConsumerStatefulWidget {
   const CartIndex({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<CartIndex> createState() => _CartIndexState();
+}
+
+class _CartIndexState extends ConsumerState<CartIndex> {
+  @override
+  Widget build(BuildContext context) {
     List<CartInfoModel> list =
         ref.watch(cartProvider.select((value) => value.cartList));
 
@@ -24,7 +29,17 @@ class CartIndex extends ConsumerWidget {
           child: list.isNotEmpty
               ? SingleChildScrollView(
                   child: Column(
-                    children: list.map((item) => GoodsCartItem(item)).toList(),
+                    children: list
+                        .map((item) => GoodsCartItem(
+                              item,
+                              onChangeCount: (count) {
+                                ref
+                                    .read(cartProvider)
+                                    .updCartCount(item, count);
+                                setState(() {});
+                              },
+                            ))
+                        .toList(),
                   ),
                 )
               : Row(
@@ -43,8 +58,10 @@ class CartIndex extends ConsumerWidget {
 
   Widget _footerBar(List<CartInfoModel> list) {
     double total = 0;
+    int totalCount = 0;
     for (var item in list) {
-      total += item.price;
+      total += item.price * item.count;
+      totalCount += item.count;
     }
 
     return Container(
@@ -67,7 +84,7 @@ class CartIndex extends ConsumerWidget {
           BasicButton(
             onPressed: () {},
             size: BasicButtonSize.large,
-            child: Text('去结算 (${list.length})'),
+            child: Text('去结算 ($totalCount)'),
           ),
         ],
       ),

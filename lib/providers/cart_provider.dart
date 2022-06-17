@@ -19,17 +19,19 @@ class CartNotifier extends ChangeNotifier {
     if (idx > -1) {
       cartList[idx].count += cartInfo.count;
     } else {
-      cartList.add(cartInfo);
+      // 深拷贝
+      cartList.add(cartInfoModelFromJson(cartInfoModelToJson(cartInfo)));
     }
     notifyListeners();
   }
 
-  // 商品数量加减
-  void addOrReduceAction(int idx, String type) {
-    if (type == 'add') {
-      cartList[idx].count++;
-    } else if (type == 'reduce') {
-      cartList[idx].count--;
+  // 加入购物车
+  void updCartCount(CartInfoModel cartInfo, int count) {
+    int idx = cartList.indexWhere((item) => (item.id == cartInfo.id &&
+        item.color == cartInfo.color &&
+        item.size == cartInfo.size));
+    if (idx > -1) {
+      cartList[idx].count = count;
     }
     notifyListeners();
   }
