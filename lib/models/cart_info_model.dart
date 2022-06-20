@@ -14,7 +14,7 @@ class CartInfoModel {
     required this.id,
     required this.title,
     required this.price,
-    required this.image,
+    required this.cover,
     required this.count,
     required this.color,
     required this.size,
@@ -23,7 +23,7 @@ class CartInfoModel {
   int id;
   String title;
   double price;
-  String image;
+  String cover;
   int count;
   String color;
   String size;
@@ -32,7 +32,7 @@ class CartInfoModel {
         id: json["id"],
         title: json["title"],
         price: json["price"],
-        image: json["image"],
+        cover: json["cover"],
         count: json["count"],
         color: json["color"],
         size: json["size"],
@@ -42,7 +42,7 @@ class CartInfoModel {
         "id": id,
         "title": title,
         "price": price,
-        "image": image,
+        "cover": cover,
         "count": count,
         "color": color,
         "size": size,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/components/wrap_grid_view.dart';
 
@@ -6,51 +7,58 @@ class CategorySection extends StatelessWidget {
   const CategorySection({Key? key}) : super(key: key);
 
   final List<Category> categorys = const [
-    Category(label: '美食', icon: Icons.account_balance_wallet_outlined),
-    Category(label: '休闲娱乐', icon: Icons.account_balance_wallet_outlined),
-    Category(label: '霸王餐', icon: Icons.account_balance_wallet_outlined),
-    Category(label: '电影票', icon: Icons.account_balance_wallet_outlined),
-    Category(label: '下午茶', icon: Icons.account_balance_wallet_outlined),
-    Category(label: '火锅', icon: Icons.account_balance_wallet_outlined),
-    Category(label: '烤肉', icon: Icons.account_balance_wallet_outlined),
+    Category(label: '化妆品', icon: 'assets/svg/category_cosmetics.svg'),
+    Category(label: '服饰', icon: 'assets/svg/category_costume.svg'),
+    Category(label: '手机', icon: 'assets/svg/category_phone.svg'),
+    Category(label: '家电', icon: 'assets/svg/category_appliance.svg'),
+    Category(label: '酒水', icon: 'assets/svg/category_drinks.svg'),
+    Category(label: '生鲜水果', icon: 'assets/svg/category_fruits.svg'),
+    Category(label: '书籍', icon: 'assets/svg/category_book.svg'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return WrapGridView(
       spacing: 5.0,
-      runSpacing: 10.0,
+      runSpacing: 15.0,
       lineCount: 5,
-      children: categorys.map((item) => _categoryItem(item)).toList(),
+      children: categorys.map((item) => CategoryItem(item)).toList(),
     );
   }
 }
 
-//
+class CategoryItem extends StatelessWidget {
+  const CategoryItem(this.item, {Key? key}) : super(key: key);
+  final Category item;
 
-Widget _categoryItem(Category item) {
-  return GestureDetector(
-    onTap: () {},
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4),
-          child: Icon(item.icon, size: 35),
-        ),
-        Text(
-          item.label!,
-          style: const TextStyle(fontSize: 11, color: AppTheme.darkText),
-          overflow: TextOverflow.ellipsis,
-        )
-      ],
-    ),
-  );
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context)
+            .pushNamed('/goods', arguments: {'category': item.label});
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: SvgPicture.asset(item.icon, height: 35),
+          ),
+          Text(
+            item.label!,
+            style: const TextStyle(fontSize: 11, color: AppTheme.darkText),
+            overflow: TextOverflow.ellipsis,
+          )
+        ],
+      ),
+    );
+  }
 }
 
 class Category {
   final String? label;
-  final IconData icon;
+  final String icon;
 
   const Category({this.label, required this.icon});
 }

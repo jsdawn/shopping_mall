@@ -37,13 +37,11 @@ class _NavigationWithViewState extends State<NavigationWithView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.nearlyWhite,
-      body: Padding(
-        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        child: PageView(
-          controller: _pageController,
-          children: widget.items.map((item) => item.body).toList(),
-          onPageChanged: (position) => {setState(() => _position = position)},
-        ),
+      body: PageView(
+        controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: widget.items.map((item) => item.body).toList(),
+        onPageChanged: (position) => {setState(() => _position = position)},
       ),
       bottomNavigationBar: _bottomNavigationBar(),
     );

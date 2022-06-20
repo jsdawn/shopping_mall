@@ -53,9 +53,12 @@ class _RefreshLoadMoreViewState extends State<RefreshLoadMoreView> {
     _scrollController = ScrollController();
     _loadAction();
 
+    // 监听滚动操作
     _scrollController.addListener(() {
-      if (_scrollController.position.pixels ==
-          _scrollController.position.maxScrollExtent) {
+      if (_scrollController.hasClients &&
+          (_scrollController.position.pixels ==
+              _scrollController.position.maxScrollExtent)) {
+        // 滑动到底部
         if (_isLoading) return;
         _loadAction();
       }
@@ -74,13 +77,13 @@ class _RefreshLoadMoreViewState extends State<RefreshLoadMoreView> {
       context: context,
       removeTop: true,
       removeBottom: true,
-      child: ListView(
+      child: SingleChildScrollView(
         controller: _scrollController,
         physics: const AlwaysScrollableScrollPhysics(),
-        children: [
+        child: Column(children: [
           widget.child,
           _footerBlock(),
-        ],
+        ]),
       ),
     );
 

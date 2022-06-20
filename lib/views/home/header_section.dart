@@ -21,10 +21,10 @@ class HeaderSection extends StatelessWidget {
               children: const <Widget>[
                 Text('Welcome to', textAlign: TextAlign.left),
                 Text(
-                  '优惠商城',
+                  '青山商城',
                   textAlign: TextAlign.left,
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       color: AppTheme.primaryColor,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 0.85),
@@ -35,7 +35,7 @@ class HeaderSection extends StatelessWidget {
           SizedBox(
             width: 50,
             height: 50,
-            child: Image.asset('assets/images/userImage.png'),
+            child: Image.asset('assets/images/logo.png'),
           )
         ],
       ),

@@ -32,7 +32,7 @@ class _DetailFooterBarState extends ConsumerState<DetailFooterBar> {
         id: _goodsDetail.id,
         title: _goodsDetail.title,
         price: _goodsDetail.price,
-        image: _goodsDetail.cover,
+        cover: _goodsDetail.cover,
         count: 1,
         color: _goodsDetail.colorOptions[0],
         size: _goodsDetail.sizeOptions[0]);

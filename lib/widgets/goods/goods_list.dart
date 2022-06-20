@@ -13,6 +13,8 @@ class GoodsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return MasonryGridView.count(
       controller: controller,
+      padding:
+          list.isNotEmpty ? const EdgeInsets.symmetric(vertical: 12) : null,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       crossAxisCount: 2,

@@ -4,6 +4,7 @@ import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/components/basic_button.dart';
 import 'package:shopping_mall/components/future_builder_snapshot.dart';
 import 'package:shopping_mall/components/search_input.dart';
+import 'package:shopping_mall/views/home/banner_section.dart';
 import 'package:shopping_mall/widgets/goods/goods_list.dart';
 
 import 'category_section.dart';
@@ -39,7 +40,8 @@ class _HomeIndexState extends State<HomeIndex>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return ColoredBox(
+    return Container(
+      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       color: AppTheme.nearlyWhite,
       child: Stack(children: [
         SingleChildScrollView(
@@ -58,7 +60,7 @@ class _HomeIndexState extends State<HomeIndex>
     );
   }
 
-  // 正文内容区域
+  /// 正文内容区域
   Widget _buildBody(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -77,6 +79,11 @@ class _HomeIndexState extends State<HomeIndex>
             ],
           ),
         ),
+        // banner
+        const Padding(
+          padding: EdgeInsets.only(top: 20.0),
+          child: AspectRatio(aspectRatio: 3.0, child: BannerSection()),
+        ),
         // 分类列表
         const Padding(
           padding: EdgeInsets.only(top: 20.0),
@@ -85,7 +92,7 @@ class _HomeIndexState extends State<HomeIndex>
         // 热推商品
         _sectionTitle(title: '热门商品'),
         Padding(
-          padding: const EdgeInsets.only(top: 10),
+          padding: const EdgeInsets.only(top: 5),
           child: _buildListUI(),
         ),
       ],

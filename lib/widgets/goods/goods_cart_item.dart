@@ -24,8 +24,8 @@ class GoodsCartItem extends StatelessWidget {
               width: 100,
               child: AspectRatio(
                 aspectRatio: 1.0,
-                child: Image.asset(
-                  'assets/images/book1.jpg',
+                child: Image.network(
+                  item.cover,
                   fit: BoxFit.cover,
                 ),
               ),

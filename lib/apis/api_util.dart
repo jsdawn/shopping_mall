@@ -6,6 +6,7 @@ class ApiUtil {
   static Future<List<GoodsModel>> getGoodsList({
     int? page,
     int? size = 10,
+    String? category,
   }) async {
     // Json模拟请求
     String jsonString =
@@ -22,7 +23,6 @@ class ApiUtil {
 
   /// 获取商品详情
   static Future<GoodsModel> getGoodsDetail(int id) async {
-    print('getGoodsDetail' + id.toString());
     List<GoodsModel> list = await ApiUtil.getGoodsList();
     GoodsModel detail = list.firstWhere((item) => item.id == id,
         orElse: () => GoodsModel.fromJson({}));
