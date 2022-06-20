@@ -19,6 +19,7 @@ class HomeIndex extends StatefulWidget {
 class _HomeIndexState extends State<HomeIndex>
     with AutomaticKeepAliveClientMixin {
   final double _headerHeight = HeaderSection.headerHeight;
+  late ScrollController _scrollController;
 
   @override
   bool get wantKeepAlive => true;
@@ -26,10 +27,12 @@ class _HomeIndexState extends State<HomeIndex>
   @override
   void initState() {
     super.initState();
+    _scrollController = ScrollController();
   }
 
   @override
   void dispose() {
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -112,7 +115,10 @@ class _HomeIndexState extends State<HomeIndex>
                   Padding(
                     padding:
                         const EdgeInsets.only(left: 20, right: 20, bottom: 20),
-                    child: GoodsList(data),
+                    child: GoodsList(
+                      data,
+                      controller: _scrollController,
+                    ),
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: 12),

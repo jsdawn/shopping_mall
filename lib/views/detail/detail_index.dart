@@ -22,6 +22,13 @@ class DetailIndex extends ConsumerStatefulWidget {
 class _DetailIndexState extends ConsumerState<DetailIndex> {
   int id = 0;
 
+  // 获取并更新数据
+  Future _getDetailInfo(id) async {
+    if (!mounted) return;
+    await ref.read(goodsProvider.notifier).setGoodsInfo(id);
+    return '完成加载';
+  }
+
   @override
   void initState() {
     super.initState();
@@ -30,19 +37,21 @@ class _DetailIndexState extends ConsumerState<DetailIndex> {
   @override
   Widget build(BuildContext context) {
     id = HelperUtil.getRouteParam(context, 'id') ?? 0;
-    setState(() {});
 
     return Scaffold(
       backgroundColor: AppTheme.chipBackground,
       appBar: const BasicAppBar(title: Text('详情')),
       body: FutureBuilder(
-          future: ApiUtil.getGoodsDetail(id),
+          future: _getDetailInfo(id),
           builder: (BuildContext ctx, AsyncSnapshot snapshot) {
             return FutureBuilderSnapshot(
                 context: ctx,
                 snapshot: snapshot,
                 builder: (data) {
-                  ref.read(goodsProvider.notifier).setGoods(data);
+                  Provider((ref) {
+                    ref.read(goodsProvider.notifier).setGoods(data);
+                  });
+
                   return Column(children: [
                     Expanded(
                       child: SingleChildScrollView(
