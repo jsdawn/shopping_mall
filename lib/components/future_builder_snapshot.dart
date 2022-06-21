@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_mall/app_theme.dart';
 
-class FutureBuilderSnapshot<T> extends StatelessWidget {
+class FutureBuilderSnapshot extends StatelessWidget {
   const FutureBuilderSnapshot(
       {Key? key,
       required this.context,
@@ -11,7 +11,7 @@ class FutureBuilderSnapshot<T> extends StatelessWidget {
       : super(key: key);
 
   final BuildContext context;
-  final AsyncSnapshot<T> snapshot;
+  final AsyncSnapshot snapshot;
   final Function? builder;
   final Widget? child;
 
