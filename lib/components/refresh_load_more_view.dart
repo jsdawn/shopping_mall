@@ -55,9 +55,9 @@ class _RefreshLoadMoreViewState extends State<RefreshLoadMoreView> {
 
     // 监听滚动操作
     _scrollController.addListener(() {
-      if (_scrollController.hasClients &&
-          (_scrollController.position.pixels ==
-              _scrollController.position.maxScrollExtent)) {
+      if (!_scrollController.hasClients) return;
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
         // 滑动到底部
         if (_isLoading) return;
         _loadAction();
@@ -88,7 +88,7 @@ class _RefreshLoadMoreViewState extends State<RefreshLoadMoreView> {
     );
 
     if (widget.onRefresh == null) {
-      return Scrollbar(child: _mainContent);
+      return _mainContent;
     }
 
     return RefreshIndicator(

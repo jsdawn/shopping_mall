@@ -6,13 +6,14 @@ class SearchInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
+    return Container(
+      height: 45,
       decoration: const BoxDecoration(
         color: AppTheme.notWhite,
         borderRadius: BorderRadius.all(Radius.circular(13.0)),
       ),
       child: Row(
-        children: <Widget>[
+        children: [
           Expanded(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -36,9 +37,8 @@ class SearchInput extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            width: 60,
-            height: 60,
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 12),
             child: Icon(Icons.search, color: AppTheme.deactivatedText),
           )
         ],

@@ -19,17 +19,14 @@ class _GoodsListIndexState extends State<GoodsListIndex> {
   List<GoodsModel> list = [];
   int page = 1;
   int size = 20;
-  late ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
   }
 
   @override
   void dispose() {
-    _scrollController.dispose();
     super.dispose();
   }
 
@@ -57,10 +54,7 @@ class _GoodsListIndexState extends State<GoodsListIndex> {
         child: Padding(
           padding:
               const EdgeInsets.only(top: 0, left: 20, right: 20, bottom: 0),
-          child: GoodsList(
-            list,
-            controller: _scrollController,
-          ),
+          child: GoodsList(list),
         ),
       ),
     );

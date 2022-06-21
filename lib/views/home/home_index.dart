@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_mall/apis/api_util.dart';
 import 'package:shopping_mall/app_theme.dart';
-import 'package:shopping_mall/components/basic_button.dart';
-import 'package:shopping_mall/components/future_builder_snapshot.dart';
 import 'package:shopping_mall/components/search_input.dart';
-import 'package:shopping_mall/views/home/banner_section.dart';
-import 'package:shopping_mall/widgets/goods/goods_list.dart';
-
-import 'category_section.dart';
-import 'header_section.dart';
+import 'package:shopping_mall/views/home/home_banner.dart';
+import 'package:shopping_mall/views/home/home_category.dart';
+import 'package:shopping_mall/views/home/home_header.dart';
+import 'package:shopping_mall/views/home/home_list.dart';
 
 class HomeIndex extends StatefulWidget {
   const HomeIndex({Key? key}) : super(key: key);
@@ -19,21 +15,16 @@ class HomeIndex extends StatefulWidget {
 
 class _HomeIndexState extends State<HomeIndex>
     with AutomaticKeepAliveClientMixin {
-  final double _headerHeight = HeaderSection.headerHeight;
-  late ScrollController _scrollController;
-
   @override
   bool get wantKeepAlive => true;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
   }
 
   @override
   void dispose() {
-    _scrollController.dispose();
     super.dispose();
   }
 
@@ -43,62 +34,51 @@ class _HomeIndexState extends State<HomeIndex>
     return Container(
       padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       color: AppTheme.nearlyWhite,
-      child: Stack(children: [
-        SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(top: _headerHeight),
-            child: _buildBody(context),
+      child: Column(children: [
+        const HomeHeader(),
+        Expanded(
+          child: SingleChildScrollView(
+            child: _buildBodyUI(context),
           ),
         ),
-        Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            height: _headerHeight,
-            child: const HeaderSection()),
       ]),
     );
   }
 
   /// 正文内容区域
-  Widget _buildBody(BuildContext context) {
+  Widget _buildBodyUI(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         // 搜索框
         Padding(
-          padding: const EdgeInsets.only(top: 20.0, left: 15.0),
-          child: Row(
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.75,
-                height: 50,
-                child: const SearchInput(),
-              ),
-              const Spacer(),
-            ],
-          ),
+          padding: EdgeInsets.only(
+              top: 20.0,
+              left: 15.0,
+              right: MediaQuery.of(context).size.width * 0.25),
+          child: const SearchInput(),
         ),
         // banner
         const Padding(
           padding: EdgeInsets.only(top: 20.0),
-          child: AspectRatio(aspectRatio: 3.0, child: BannerSection()),
+          child: AspectRatio(aspectRatio: 3.0, child: HomeBanner()),
         ),
         // 分类列表
         const Padding(
           padding: EdgeInsets.only(top: 20.0),
-          child: CategorySection(),
+          child: HomeCategory(),
         ),
         // 热推商品
         _sectionTitle(title: '热门商品'),
-        Padding(
-          padding: const EdgeInsets.only(top: 5),
-          child: _buildListUI(),
+        const Padding(
+          padding: EdgeInsets.only(top: 5),
+          child: HomeList(),
         ),
       ],
     );
   }
 
+  /// 标题
   Widget _sectionTitle({String? title = ''}) {
     return Padding(
       padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
@@ -107,44 +87,5 @@ class _HomeIndexState extends State<HomeIndex>
         style: AppTheme.headline.copyWith(color: AppTheme.lightText),
       ),
     );
-  }
-
-  Widget _buildListUI() {
-    return FutureBuilder(
-        future: ApiUtil.getGoodsList(page: 1, size: 20),
-        builder: (context, snapshot) {
-          return FutureBuilderSnapshot(
-            context: context,
-            snapshot: snapshot,
-            builder: (data) {
-              return Column(
-                children: [
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 20, right: 20, bottom: 20),
-                    child: GoodsList(
-                      data,
-                      controller: _scrollController,
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    color: AppTheme.chipBackground,
-                    child: Center(
-                      child: BasicButton.outline(
-                        onPressed: () {
-                          Navigator.of(context).pushNamedAndRemoveUntil(
-                              '/', (route) => false,
-                              arguments: {'tab': 1});
-                        },
-                        child: const Text('前往查看更多'),
-                      ),
-                    ),
-                  )
-                ],
-              );
-            },
-          );
-        });
   }
 }

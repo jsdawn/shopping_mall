@@ -3,8 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/components/wrap_grid_view.dart';
 
-class CategorySection extends StatelessWidget {
-  const CategorySection({Key? key}) : super(key: key);
+class HomeCategory extends StatelessWidget {
+  const HomeCategory({Key? key}) : super(key: key);
 
   final List<Category> categorys = const [
     Category(label: '化妆品', icon: 'assets/svg/category_cosmetics.svg'),
