@@ -5,6 +5,22 @@ import 'package:shopping_mall/models/cart_info_model.dart';
 class CartNotifier extends ChangeNotifier {
   final List<CartInfoModel> cartList = <CartInfoModel>[];
 
+  int get totalCount {
+    int total = 0;
+    for (var item in cartList) {
+      total += item.count;
+    }
+    return total;
+  }
+
+  double get totalPrice {
+    double total = 0;
+    for (var item in cartList) {
+      total += item.price * item.count;
+    }
+    return total;
+  }
+
   setCartList(List<CartInfoModel> list) {
     cartList.clear();
     cartList.addAll(list);

@@ -5,6 +5,7 @@ import 'package:shopping_mall/components/basic_button.dart';
 import 'package:shopping_mall/components/show_basic_bottom_sheet.dart';
 import 'package:shopping_mall/models/cart_info_model.dart';
 import 'package:shopping_mall/models/goods_model.dart';
+import 'package:shopping_mall/providers/cart_provider.dart';
 import 'package:shopping_mall/providers/goods_provider.dart';
 import 'package:shopping_mall/widgets/goods/goods_props_pannel.dart';
 
@@ -40,6 +41,8 @@ class _DetailFooterBarState extends ConsumerState<DetailFooterBar> {
 
   @override
   Widget build(BuildContext context) {
+    int cartCount = ref.watch(cartProvider.select((value) => value.totalCount));
+
     return Container(
       height: DetailFooterBar.height,
       decoration: const BoxDecoration(
@@ -65,7 +68,7 @@ class _DetailFooterBarState extends ConsumerState<DetailFooterBar> {
                       .pushNamedAndRemoveUntil('/', (route) => false);
                 }),
                 _footerIconButton(Icons.shopping_cart_outlined, '购物车',
-                    onTap: () {
+                    count: cartCount, onTap: () {
                   Navigator.of(context).pushNamed('/', arguments: {'tab': 2});
                 }),
                 _footerIconButton(Icons.account_circle_outlined, '我的',
@@ -92,24 +95,50 @@ class _DetailFooterBarState extends ConsumerState<DetailFooterBar> {
     );
   }
 
-  Widget _footerIconButton(IconData iconData, String label,
-      {Function()? onTap}) {
+  Widget _footerIconButton(
+    IconData iconData,
+    String label, {
+    Function()? onTap,
+    int? count,
+  }) {
+    Widget _badge = count != null && count > 0
+        ? Positioned(
+            top: 0,
+            right: 0,
+            child: Container(
+              width: 16,
+              height: 16,
+              alignment: Alignment.center,
+              decoration: const BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.all(Radius.circular(13))),
+              child: Text(
+                count.toString(),
+                softWrap: false,
+                style: const TextStyle(color: Colors.white, fontSize: 10),
+              ),
+            ))
+        : const SizedBox.shrink();
+
     return GestureDetector(
       onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(iconData, size: 25),
-            Padding(
-              padding: const EdgeInsets.only(top: 1.0),
-              child:
-                  Text(label, style: AppTheme.caption.copyWith(fontSize: 11)),
-            ),
-          ],
+      child: Stack(children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(iconData, size: 25),
+              Padding(
+                padding: const EdgeInsets.only(top: 1.0),
+                child:
+                    Text(label, style: AppTheme.caption.copyWith(fontSize: 11)),
+              ),
+            ],
+          ),
         ),
-      ),
+        _badge,
+      ]),
     );
   }
 

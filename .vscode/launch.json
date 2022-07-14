@@ -8,7 +8,6 @@
             "name": "shopping_mall",
             "request": "launch",
             "type": "dart",
-            "deviceId": "macos"
         },
         {
             "name": "shopping_mall (profile mode)",

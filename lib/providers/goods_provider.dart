@@ -10,9 +10,10 @@ class GoodsNotifier extends StateNotifier<GoodsModel> {
   }
 
   // 从后台获取商品数据
-  Future setGoodsInfo(int id) async {
+  Future<GoodsModel> getGoodsInfo(int id) async {
     GoodsModel res = await ApiUtil.getGoodsDetail(id);
     state = res;
+    return res;
   }
 }
 

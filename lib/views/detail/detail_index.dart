@@ -24,7 +24,7 @@ class _DetailIndexState extends ConsumerState<DetailIndex> {
   // 获取并更新数据
   Future _getDetailInfo(id) async {
     if (!mounted) return;
-    await ref.read(goodsProvider.notifier).setGoodsInfo(id);
+    await ref.read(goodsProvider.notifier).getGoodsInfo(id);
     return '完成加载';
   }
 
@@ -46,11 +46,7 @@ class _DetailIndexState extends ConsumerState<DetailIndex> {
             return FutureBuilderSnapshot(
                 context: ctx,
                 snapshot: snapshot,
-                builder: (data) {
-                  Provider((ref) {
-                    ref.read(goodsProvider.notifier).setGoods(data);
-                  });
-
+                builder: (_data) {
                   return Column(children: [
                     Expanded(
                       child: SingleChildScrollView(
