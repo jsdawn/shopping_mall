@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_mall/app_home_screen.dart';
 import 'package:shopping_mall/app_theme.dart';
+import 'package:shopping_mall/providers/cart_provider.dart';
 import 'package:shopping_mall/routers/routes.dart';
 
 void main() async {
@@ -16,8 +17,19 @@ void main() async {
   ]).then((_) => runApp(const ProviderScope(child: MyApp())));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  ConsumerState<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends ConsumerState<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(cartProvider).getCartList();
+  }
 
   @override
   Widget build(BuildContext context) {

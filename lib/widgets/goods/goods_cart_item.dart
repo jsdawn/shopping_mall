@@ -6,13 +6,37 @@ import 'package:shopping_mall/widgets/goods/goods_price.dart';
 
 class GoodsCartItem extends StatelessWidget {
   final CartInfoModel item;
-  final void Function(int)? onChangeCount;
+  final Function(int)? onChangeCount;
+  final Function(CartInfoModel)? onRemove;
 
-  const GoodsCartItem(this.item, {Key? key, this.onChangeCount})
+  const GoodsCartItem(this.item, {Key? key, this.onChangeCount, this.onRemove})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        _buildBodyUI(),
+        Positioned(
+          top: 10,
+          right: 10,
+          child: GestureDetector(
+            onTap: () {
+              if (onRemove == null) return;
+              onRemove!(item);
+            },
+            child: const Icon(
+              Icons.close_rounded,
+              size: 18,
+              color: AppTheme.deactivatedText,
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _buildBodyUI() {
     return Container(
         margin: const EdgeInsets.only(bottom: 1),
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -21,7 +45,7 @@ class GoodsCartItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              width: 100,
+              width: 95,
               child: AspectRatio(
                 aspectRatio: 1.0,
                 child: Image.network(

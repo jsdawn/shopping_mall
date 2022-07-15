@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_mall/apis/api_util.dart';
 import 'package:shopping_mall/models/goods_model.dart';
 
+// StateNotifierProvider 用法
 class GoodsNotifier extends StateNotifier<GoodsModel> {
   GoodsNotifier() : super(GoodsModel.fromJson({}));
 

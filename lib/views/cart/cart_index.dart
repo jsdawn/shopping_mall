@@ -57,12 +57,10 @@ class _CartIndexState extends ConsumerState<CartIndex> {
   }
 
   Widget _footerBar(List<CartInfoModel> list) {
-    double total = 0;
-    int totalCount = 0;
-    for (var item in list) {
-      total += item.price * item.count;
-      totalCount += item.count;
-    }
+    double totalPrice =
+        ref.watch(cartProvider.select((value) => value.totalPrice));
+    int totalCount =
+        ref.watch(cartProvider.select((value) => value.totalCount));
 
     return Container(
       height: 55,
@@ -79,7 +77,7 @@ class _CartIndexState extends ConsumerState<CartIndex> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
-            children: [const Text('总计：'), GoodsPrice(price: total)],
+            children: [const Text('总计：'), GoodsPrice(price: totalPrice)],
           ),
           BasicButton(
             onPressed: () {},

@@ -4,6 +4,10 @@
 
 import 'dart:convert';
 
+List<CartInfoModel> cartInfoModelListFromJson(String str) =>
+    List<CartInfoModel>.from(
+        json.decode(str).map((x) => CartInfoModel.fromJson(x)));
+
 CartInfoModel cartInfoModelFromJson(String str) =>
     CartInfoModel.fromJson(json.decode(str));
 
@@ -29,13 +33,13 @@ class CartInfoModel {
   String size;
 
   factory CartInfoModel.fromJson(Map<String, dynamic> json) => CartInfoModel(
-        id: json["id"],
-        title: json["title"],
-        price: json["price"],
-        cover: json["cover"],
-        count: json["count"],
-        color: json["color"],
-        size: json["size"],
+        id: json["id"] ?? 0,
+        title: json["title"] ?? '',
+        price: json["price"] ?? 0.0,
+        cover: json["cover"] ?? '',
+        count: json["count"] ?? 0,
+        color: json["color"] ?? '',
+        size: json["size"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {

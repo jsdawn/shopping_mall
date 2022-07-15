@@ -1,7 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shopping_mall/models/cart_info_model.dart';
 
+const cartPrefsKey = 'cartList';
+
+// StateNotifierProvider 用法
 class CartNotifier extends ChangeNotifier {
   final List<CartInfoModel> cartList = <CartInfoModel>[];
 
@@ -25,6 +31,7 @@ class CartNotifier extends ChangeNotifier {
     cartList.clear();
     cartList.addAll(list);
     notifyListeners();
+    updCartPrefs();
   }
 
   // 加入购物车
@@ -39,6 +46,7 @@ class CartNotifier extends ChangeNotifier {
       cartList.add(cartInfoModelFromJson(cartInfoModelToJson(cartInfo)));
     }
     notifyListeners();
+    updCartPrefs();
   }
 
   // 加入购物车
@@ -50,18 +58,42 @@ class CartNotifier extends ChangeNotifier {
       cartList[idx].count = count;
     }
     notifyListeners();
+    updCartPrefs();
   }
 
   // 移除某项
   void remove(int idx) {
     cartList.removeAt(idx);
     notifyListeners();
+    updCartPrefs();
   }
 
   // 清空购物车
-  void clear() {
+  void clear() async {
     cartList.clear();
     notifyListeners();
+    updCartPrefs();
+  }
+
+  // 更新 购物车 本地持久化
+  void updCartPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    String cartString = json.encode(cartList).toString();
+    prefs.setString(cartPrefsKey, cartString);
+  }
+
+  // 查询/初始化购物车
+  Future<List<CartInfoModel>> getCartList() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? _cartString = prefs.getString(cartPrefsKey);
+    cartList.clear();
+    // 本地数据初始化购物车
+    if (_cartString != null) {
+      List<CartInfoModel> _list = cartInfoModelListFromJson(_cartString);
+      cartList.addAll(_list);
+    }
+    notifyListeners();
+    return cartList;
   }
 }
 
