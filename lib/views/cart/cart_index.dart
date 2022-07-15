@@ -30,15 +30,13 @@ class _CartIndexState extends ConsumerState<CartIndex> {
               ? SingleChildScrollView(
                   child: Column(
                     children: list
-                        .map((item) => GoodsCartItem(
-                              item,
-                              onChangeCount: (count) {
-                                ref
-                                    .read(cartProvider)
-                                    .updCartCount(item, count);
-                                setState(() {});
-                              },
-                            ))
+                        .map((item) =>
+                            GoodsCartItem(item, onChangeCount: (count) {
+                              ref.read(cartProvider).updCartCount(item, count);
+                              setState(() {});
+                            }, onRemove: (item) {
+                              ref.read(cartProvider).renmoveCart(item);
+                            }))
                         .toList(),
                   ),
                 )

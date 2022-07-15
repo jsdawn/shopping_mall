@@ -4,6 +4,7 @@ import 'package:shopping_mall/utils/helper_util.dart';
 import 'package:shopping_mall/views/cart/cart_index.dart';
 import 'package:shopping_mall/views/goods/goods_index.dart';
 import 'package:shopping_mall/views/home/home_index.dart';
+import 'package:shopping_mall/views/my/my_index.dart';
 
 class AppHomeScreen extends StatelessWidget {
   const AppHomeScreen({Key? key}) : super(key: key);
@@ -18,9 +19,7 @@ class AppHomeScreen extends StatelessWidget {
     NavIconData(
         icon: Icons.shopping_cart_outlined, label: '购物车', body: CartIndex()),
     NavIconData(
-        icon: Icons.account_circle_outlined,
-        label: '我的',
-        body: Center(child: Text('我的')))
+        icon: Icons.account_circle_outlined, label: '我的', body: MyIndex())
   ];
 
   @override

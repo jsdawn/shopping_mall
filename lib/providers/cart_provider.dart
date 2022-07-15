@@ -49,7 +49,7 @@ class CartNotifier extends ChangeNotifier {
     updCartPrefs();
   }
 
-  // 加入购物车
+  // 设置购物车数量
   void updCartCount(CartInfoModel cartInfo, int count) {
     int idx = cartList.indexWhere((item) => (item.id == cartInfo.id &&
         item.color == cartInfo.color &&
@@ -61,11 +61,21 @@ class CartNotifier extends ChangeNotifier {
     updCartPrefs();
   }
 
-  // 移除某项
+  // 移除某项-按索引
   void remove(int idx) {
     cartList.removeAt(idx);
     notifyListeners();
     updCartPrefs();
+  }
+
+  // 移除购物车项
+  void renmoveCart(CartInfoModel cartInfo) {
+    int idx = cartList.indexWhere((item) => (item.id == cartInfo.id &&
+        item.color == cartInfo.color &&
+        item.size == cartInfo.size));
+    if (idx > -1) {
+      remove(idx);
+    }
   }
 
   // 清空购物车

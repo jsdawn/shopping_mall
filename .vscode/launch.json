@@ -8,6 +8,7 @@
             "name": "shopping_mall",
             "request": "launch",
             "type": "dart",
+            "deviceId": "android"
         },
         {
             "name": "shopping_mall (profile mode)",

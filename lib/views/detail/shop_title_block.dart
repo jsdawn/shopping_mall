@@ -26,7 +26,7 @@ class ShopTitleBlock extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
-              Text('优惠商城官方店铺'),
+              Text('青山商城官方店铺'),
               Text(
                 '★官方认证',
                 style: TextStyle(color: AppTheme.primaryColor, fontSize: 12),
