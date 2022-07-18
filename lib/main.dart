@@ -44,7 +44,7 @@ class _MyAppState extends ConsumerState<MyApp> {
     ));
 
     return MaterialApp(
-      title: 'Flutter UI',
+      title: '青山商城',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.teal,
