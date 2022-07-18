@@ -68,7 +68,7 @@ class _MyIndexState extends State<MyIndex> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
                 Text('青山依旧', style: AppTheme.title),
-                Text('抽象设计上，VIP购物狂人', style: AppTheme.caption),
+                Text('抽象设计师，VIP购物狂人', style: AppTheme.caption),
               ],
             )
           ],
