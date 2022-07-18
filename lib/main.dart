@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_mall/app_home_screen.dart';
 import 'package:shopping_mall/app_theme.dart';
 import 'package:shopping_mall/providers/cart_provider.dart';
-import 'package:shopping_mall/routers/routes.dart';
+import 'package:shopping_mall/router/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
