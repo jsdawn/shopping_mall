@@ -1,22 +1,22 @@
-# shopping_mall
+# 青山商城
 
-A new Flutter project.
+使用 `Flutter 2.x` 版本开发的一个 电子商城APP项目，支持 `Null Safety`
 
-## Getting Started
+## LICENSE
 
-```
+该项目使用 `GPL-2.0` 协议，如果您使用了该项目或部分代码，请以相同的协议开源您的项目。协议详细请查看根目录 `LICENSE` 文件。
+
+这是为了更好的帮助具有相同开源精神的开发者，学习项目思路与写法，避免一味的索取于商用。
+
+## Get Start
+
+```sh
+# 初始化项目资源包
 flutter pub get
+
+# 运行项目
 flutter run
 ```
-如果未能启动`macos`, 则需先构建 `flutter create .`
 
-This project is a starting point for a Flutter application.
+如果未能启动 `macos`, 则需先构建项目 `flutter create .`
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
