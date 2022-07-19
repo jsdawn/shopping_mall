@@ -56,33 +56,34 @@ class GoodsCartItem extends StatelessWidget {
             ),
             const SizedBox(width: 15),
             Expanded(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  item.title,
-                  style: AppTheme.body1,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 20),
-                  child: Text(
-                    '${item.color}/${item.size}',
-                    style: AppTheme.caption,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    item.title,
+                    style: AppTheme.body1,
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    GoodsPrice(price: item.price),
-                    NumCounter(
-                      count: item.count,
-                      onChange: onChangeCount,
-                    )
-                  ],
-                )
-              ],
-            ))
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10, bottom: 20),
+                    child: Text(
+                      '${item.color}/${item.size}',
+                      style: AppTheme.caption,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      GoodsPrice(price: item.price),
+                      NumCounter(
+                        count: item.count,
+                        onChange: onChangeCount,
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
           ],
         ));
   }

@@ -11,6 +11,22 @@ import 'package:shopping_mall/router/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    // 顶部状态栏颜色
+    statusBarColor: Colors.transparent,
+    // 顶部状态栏图标的亮度
+    statusBarIconBrightness: Brightness.dark,
+    // 顶部状态栏的亮度
+    statusBarBrightness:
+        !kIsWeb && Platform.isAndroid ? Brightness.dark : Brightness.light,
+    // 系统底部导航栏的颜色
+    systemNavigationBarColor: Colors.white,
+    // 系统底部导航栏分割线颜色
+    systemNavigationBarDividerColor: Colors.transparent,
+    // 系统导航栏图标的亮度
+    systemNavigationBarIconBrightness: Brightness.dark,
+  ));
+
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
@@ -33,16 +49,6 @@ class _MyAppState extends ConsumerState<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-      statusBarBrightness:
-          !kIsWeb && Platform.isAndroid ? Brightness.dark : Brightness.light,
-      systemNavigationBarColor: Colors.white,
-      systemNavigationBarDividerColor: Colors.transparent,
-      systemNavigationBarIconBrightness: Brightness.dark,
-    ));
-
     return MaterialApp(
       title: '青山商城',
       debugShowCheckedModeBanner: false,

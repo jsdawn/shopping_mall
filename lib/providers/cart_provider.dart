@@ -7,7 +7,7 @@ import 'package:shopping_mall/models/cart_info_model.dart';
 
 const cartPrefsKey = 'cartList';
 
-// StateNotifierProvider 用法
+// ChangeNotifierProvider 用法
 class CartNotifier extends ChangeNotifier {
   final List<CartInfoModel> cartList = <CartInfoModel>[];
 
@@ -49,7 +49,7 @@ class CartNotifier extends ChangeNotifier {
     updCartPrefs();
   }
 
-  // 设置购物车数量
+  // 更新购物车数量
   void updCartCount(CartInfoModel cartInfo, int count) {
     int idx = cartList.indexWhere((item) => (item.id == cartInfo.id &&
         item.color == cartInfo.color &&
